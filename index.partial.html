@@ -1,0 +1,64 @@
+<head>
+  <script language="javascript"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</head>
+<form name="sci-calc">
+ <table class="calculator w3-center w3-margin w3-padding" cellspacing="0" cellpadding="1">
+  <img src="https://i.pinimg.com/originals/55/58/0f/55580f2e3a1910c4cd3e7f0a6e3167c0.gif" style="width:400px" class="w3-right"/>   
+   <tr>
+     <td colspan="5"><input id="display" name="display" value="0" size="28" maxlength="25"></td>
+   </tr>
+   <tr>
+     <td class="w3-hover-opacity"><input type="button" class="btnTop w3-hover-white" name="btnTop" value="C" onclick="this.form.display.value = 0 "></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnTop" name="btnTop" value="⇐" onclick="deleteChar(this.form.display)"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnTop" name="btnTop" value="=" onclick="if(checkNum(this.form.display.value)) { compute(this.form) }"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnOpps" name="btnOpps" value="&#960;" onclick="addChar(this.form.display,'3.14159265359')"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnMath" name="btnMath" value="%" onclick=" percent(this.form.display)"></td>
+   </tr>
+   <tr>
+     <td class="w3-hover-opacity"><input type="button" class="btnNum" name="btnNum" value="7" onclick="addChar(this.form.display, '7')"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnNum" name="btnNum" value="8" onclick="addChar(this.form.display, '8')"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnNum" name="btnNum" value="9" onclick="addChar(this.form.display, '9')"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnOpps" name="btnOpps" value="exp" onclick="if(checkNum(this.form.display.value)) { exp(this.form) }"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnMath" name="btnMath" value="/" onclick="addChar(this.form.display, '/')"></td>
+   <tr>
+     <td class="w3-hover-opacity"><input type="button" class="btnNum" name="btnNum" value="4" onclick="addChar(this.form.display, '4')"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnNum" name="btnNum" value="5" onclick="addChar(this.form.display, '5')"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnNum" name="btnNum" value="6" onclick="addChar(this.form.display, '6')"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnOpps" name="btnOpps" value="ln" onclick="if(checkNum(this.form.display.value)) { ln(this.form) }"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnMath" name="btnMath" value="×" onclick="addChar(this.form.display, '*')"></td>
+   </tr>
+   <tr>
+     <td class="w3-hover-opacity"><input type="button" class="btnNum" name="btnNum" value="1" onclick="addChar(this.form.display, '1')"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnNum" name="btnNum" value="2" onclick="addChar(this.form.display, '2')"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnNum" name="btnNum" value="3" onclick="addChar(this.form.display, '3')"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnOpps" name="btnOpps" value="&radic;" onclick="if(checkNum(this.form.display.value)) { sqrt(this.form) }"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnMath" name="btnMath" value="-" onclick="addChar(this.form.display, '-')"></td>
+   </tr>
+   <tr>
+     <td class="w3-hover-opacity"><input type="button" class="btnMath" name="btnMath" value="&#177" onclick="changeSign(this.form.display)"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnNum" name="btnNum" value="0" onclick="addChar(this.form.display, '0')"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnMath" name="btnMath" value="&#46;" onclick="addChar(this.form.display, '&#46;')"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnOpps" name="btnOpps" value="x&#94;" onclick="if(checkNum(this.form.display.value)) { square(this.form) }"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnMath" name="btnMath" value="+" onclick="addChar(this.form.display, '+')"></td>
+   </tr>
+   <tr>
+     <td class="w3-hover-opacity"><input type="button" class="btnMath" name="btnMath" value="(" onclick="addChar(this.form.display, '(')"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnMath" name="btnMath" value=")" onclick="addChar(this.form.display,')')"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnMath" name="btnMath" value="cos" onclick="if(checkNum(this.form.display.value)) { cos(this.form) }"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnMath" name="btnMath" value="sin" onclick="if(checkNum(this.form.display.value)) { sin(this.form) }"></td>
+     <td class="w3-hover-opacity"><input type="button" class="btnMath" name="btnMath" value="tan" onclick="if(checkNum(this.form.display.value)) { tan(this.form) }"></td>
+  </tr>
+   <tr><td class="w3-bar-item w3-margin-left w3-margin-bottom w3-animate-zoom" style="font-size:10px"><i class="fa fa-github w3-blue-grey w3-hover-opacity w3-animate-zoom"></i> Meow.Nalini98</td></tr>
+  </table> 
+
+</form>
